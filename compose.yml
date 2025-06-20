@@ -1,0 +1,14 @@
+services:
+
+  node:
+    image: node:18
+    container_name: node.${APP_NAME}
+    environment:
+      - VITE_HMR_HOST=${VITE_HMR_HOST}
+      - VITE_HMR_PORT=${VITE_HMR_PORT}
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./:/var/www
+    working_dir: /var/www
+    entrypoint: /var/www/docker/scripts/node.sh
